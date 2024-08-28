@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     static WindowsDriver driver;
+    static WindowsDriver rootDriver;
     protected EvpLauncherDialog evpLauncherDialog;
 
     @BeforeClass
@@ -21,15 +22,19 @@ public class BaseTest {
         capabilities.setCapability("app", "C:\\Etail\\Master\\Launcher\\AppLauncher.exe");
         capabilities.setCapability("deviceName", "ESV-QA-12");
         capabilities.setCapability("ms:waitForAppLaunch", "10");
-        driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
+        driver = new WindowsDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         evpLauncherDialog = new EvpLauncherDialog(driver);
 
 
     }
 
+
+
     //@AfterClass
     //public void tearDown() {driver.quit();}
 
     }
+
+
 
